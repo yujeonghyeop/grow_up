@@ -1,4 +1,4 @@
-import operator
+import time
 import random
 
 def winlose(a,b):
@@ -8,19 +8,23 @@ def winlose(a,b):
         groupstage[b]=0
     number=random.randint(1,100)
     if(abs(team[a]-number))>(abs(team[b]-number)):
-        print("{} vs {}, {}가 승리했습니다.".format(a,b,a))
+        if a==user or b==user:
+            print("{} vs {}, {}가 승리했습니다.".format(a,b,a))
         groupstage[a]+=3
     elif (abs(team[a]-number))<(abs(team[b]-number)):
-        print("{} vs {}, {}가 승리했습니다.".format(a,b,b))
+        if a==user or b==user:
+            print("{} vs {}, {}가 승리했습니다.".format(a,b,b))
         groupstage[b]+=3
     else:
-        print("{} vs {}, 둘의 경기는 무승부 입니다.".format(a,b))
+        if a==user or b==user:
+           print("{} vs {}, 둘의 경기는 무승부 입니다.".format(a,b))
         groupstage[a]+=1
         groupstage[b]+=1
 team={"C103":100, "C201":0,"C205":95,"C105":5,"C307":90,"C302":10,"C101":85,"C303":15,"C102":80,"C106":20,"C203":75
     ,"C207":25,"C301":70,"C104":30,"C305":65,"C204":35,"C206":60,"C304":40,"C306":55,"C202":45}
 group=[]
 groupstage={}
+tournament=[]
 print("플레이 하고싶은 팀을 입력 하세요! :")
 user=input()
 a=list(team.keys())
@@ -34,9 +38,13 @@ for i in range(4):
         for j in range(5):
             for k in range(j+1,5):
                 winlose(group[i][j],group[i][k])
-        print(groupstage)
+                time.sleep(0.2)
+        # print(groupstage.items())
+        groupstages=sorted(groupstage.items(),key=lambda x:x[1],reverse=True)
+        tournament.append(groupstages[0][0])
+        tournament.append(groupstages[1][0])
         groupstage={}
-        print(groupstage)
+print("8강 진출 팀 : {}".format(tournament))
 # print(groupstage)
 # groupstages=sorted(groupstage.items(),key=lambda x:x[1],reverse=True)
 # print(groupstages)
