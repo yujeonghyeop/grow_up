@@ -5,3 +5,4 @@
 # Gooooood~!
 
 # week_1 : 기본적인 html, css 사용법 익히기
+# week_2 : JS 문법 공부 및 웹 기능 생각해오기
