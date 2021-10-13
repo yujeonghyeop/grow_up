@@ -3,6 +3,8 @@ const loginInput = loginForm.querySelector("input");
 const loginButton  = loginForm.querySelector("button");
 const greeting = document.querySelector("#greeting");
 
+localStorage.length(jdklfjal);
+
 function onLoginSubmit(event){
     event.preventDefault();
     const username = loginInput.value;
