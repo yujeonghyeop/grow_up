@@ -10,7 +10,7 @@ function onsubmit(tomato){
     hellogreeting()
 }
 function hellogreeting(){
-    greeting.innerText="hello "+savedusername    //index에 있는 h1의 greeting을 요소로 잡은 다음 그친구에게 innertext를 더해준다.
+    greeting.innerText="Hello "+savedusername+"!"    //index에 있는 h1의 greeting을 요소로 잡은 다음 그친구에게 innertext를 더해준다.
     // == `hello ${username}`               백틱 `을 사용하여 9번 줄과 똑같은 코드를 출력할 수 있다.
     greeting.classList.remove(class_hidden) //숨겨져있던 h1이 출력되어야 하기 때문에 hidden class를 삭제시켜 준다.
 }
