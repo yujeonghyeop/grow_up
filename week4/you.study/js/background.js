@@ -7,8 +7,9 @@ const images = ["bulgaria1.jpeg","bulgaria2.jpeg","bulgaria3.jpeg","china1.jpeg"
 
 const chosenimage = images[Math.floor(Math.random()*images.length)] //저장해둔 image 배열에서 랜덤으로 chosenimage라는 변수에 저장한다.
 
-const bgimage = document.createElement("img")   //js에서 html에 img라는 요소를 만든다.
+const bgimage = document.createElement("id")   //js에서 html에 img라는 요소를 만든다.
 
 bgimage.src=`img/${chosenimage}`    //img요소 뒤에 src를 붙여주어 chosenimage가 나오게 한다.
 
 document.body.appendChild(bgimage)  //document의 body부분에 bgimage가 출력되게 한다.
+bgimage.id = 'bgImage'
