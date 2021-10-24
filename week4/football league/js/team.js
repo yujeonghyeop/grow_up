@@ -44,7 +44,6 @@ function tableprt(){
         rank.appendChild(td6)
         rank.appendChild(td7)
         rank.appendChild(td8)
-
     }
 }
 team =team.sort(function(a, b) {
