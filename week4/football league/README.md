@@ -9,11 +9,11 @@
 기능구현
 ======
 1. table에 clock 달기
-2. table 객체로 수정 --- complete
+2. table 객체로 수정    --- complete
 3. href 함수로 만들어서 코드 줄이기 
 4. calender 객체로 바꿔버리기
 5. calender box template 다시찾기
 6. rank도 js로 건드려보기
-7. 메인 아이콘 메인제목이랑 붙이기
+7. 메인 아이콘 메인제목이랑 붙이기  --- complete
 8. 최근 5경기 연동시켜보기
 9. webserver 달자
