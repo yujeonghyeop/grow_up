@@ -1,10 +1,4 @@
-export let team=[
-    {name:"C101",play:0,win:1,draw:1,lose:0,gf:0,ga:0,gd:0,point:0},
-    {name:"C102",play:0,win:2,draw:2,lose:0,gf:0,ga:0,gd:0,point:0},
-    {name:"C103",play:0,win:1,draw:3,lose:0,gf:0,ga:0,gd:0,point:0},
-    {name:"C104",play:0,win:2,draw:0,lose:2,gf:0,ga:0,gd:0,point:0}
-]
-let table=[]
+import team from './calender.js'
 function pointcal(){
     for (let i=0; i<team.length; i++){
         team[i].play = team[i].win+team[i].draw+team[i].lose
@@ -13,7 +7,6 @@ function pointcal(){
     }
 }
 pointcal()
-
 function tableprt(){
     for (let i=0;i<team.length;i++){
         const rank = document.getElementById(i)
@@ -46,10 +39,8 @@ function tableprt(){
         rank.appendChild(td8)
     }
 }
-team =team.sort(function(a, b) {
+team.sort(function(a, b) {
     return a.point - b.point;
   });
-team=team.reverse()
+team.reverse()
 tableprt()
-export {team};
-
