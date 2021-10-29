@@ -1,4 +1,5 @@
 import team from './calender.js'
+
 function pointcal(){
     for (let i=0; i<team.length; i++){
         team[i].play = team[i].win+team[i].draw+team[i].lose

@@ -17,9 +17,5 @@ function onsubmit(event){
     }
     console.log(team)
 }
-
-window.onload=function(){
-    a.addEventListener("submit",onsubmit)
-}
+a.addEventListener("submit",onsubmit)
 export default team
->>>>>>> e4d763b12a94655c4321f1311edc7faa029127f8
