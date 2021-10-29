@@ -1,5 +1,6 @@
 
 import team from './teaminf.js'
+
 const a =document.getElementById("match1")
 // let inf = a.innerText.split('\n')
 // let teamplay =inf[0].split('vs')
