@@ -1,11 +1,6 @@
 
 import team from './teaminf.js'
-<<<<<<< HEAD
-console.log(team)
-=======
 
-
->>>>>>> 9f0b63d1c29d4905e609e8283e4b81dfa6fd8b2a
 const a =document.querySelector("#form1")
 const win = document.querySelectorAll("#form1 input")[0]
 const lose = document.querySelectorAll("#form1 input")[2]
@@ -22,14 +17,7 @@ function onsubmit(event){
     }
     console.log(team)
 }
-<<<<<<< HEAD
-
 
 a.addEventListener("submit",onsubmit)
-ㅌ
+export default team
 
-export default team
-=======
-a.addEventListener("submit",onsubmit)
-export default team
->>>>>>> 9f0b63d1c29d4905e609e8283e4b81dfa6fd8b2a
