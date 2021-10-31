@@ -1,3 +1,4 @@
+
 import team from './teaminf.js'
 
 const a =document.querySelector("#form1")
@@ -18,6 +19,5 @@ function onsubmit(event){
 }
 
 a.addEventListener("submit",onsubmit)
-
 export default team
 
