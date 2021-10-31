@@ -1,9 +1,10 @@
+
 import team from './teaminf.js'
+
 
 const a =document.querySelector("#form1")
 const win = document.querySelectorAll("#form1 input")[0]
 const lose = document.querySelectorAll("#form1 input")[2]
-
 function onsubmit(event){
     event.preventDefault()
     for(let i=0;i<team.length;i++){
@@ -16,6 +17,8 @@ function onsubmit(event){
     }
     console.log(team)
 }
+window.onload = function(){
+    a.addEventListener("submit",onsubmit)
+}
 
-a.addEventListener("submit",onsubmit)
 export default team
