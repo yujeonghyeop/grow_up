@@ -1,23 +1,19 @@
 import { useEffect, useState } from "react";
-
+function Hello(){
+  useEffect(()=>{console.log("HI :)"); return ()=> console.log("Bye :(") },[])
+  return <h1>Hello</h1>
+}
 function App() {
-  const [counter, setValue] = useState(0)
-  const [keyword, setKeyword] = useState("")
-  const minus = () => {
-    setValue((prev)=>prev+1)
+  const [show, showing] =useState(false)
+  const onclick = () => {
+    showing((prev)=>!prev)
   }
-  const onchange = (event) =>{
-    setKeyword(event.target.value)
-  }
-  useEffect(()=>{console.log("counter Change")},[counter])
-  useEffect(() => {console.log("input change!")},[keyword])
   return (
     <div>
-      <input value ={keyword} onChange={onchange} type ="text" placeholder ="go input" />
-      <h1>{counter}</h1>
-      <button onClick={minus}>click</button>
+      {show ? <Hello /> : null}
+      <button onClick = {onclick}>{show ? "Hide" : "Show"}</button>
     </div>
-  );
+  )
 }
 
 export default App;
