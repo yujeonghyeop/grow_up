@@ -14,7 +14,7 @@ function Detail() {
   return (
     <div>
       {detail.title}
-      <img src={detail.medium_cover_image} />
+      <img src={detail.medium_cover_image} alt ={detail.id}/>
     </div>
   );
 }
