@@ -32,12 +32,16 @@
   }
   
   .movie__title a {
-    margin-bottom: 5px;
+    margin-bottom: 0px;
     font-size: 24px;
+    font-family: cursive;
     color: #2c2c2c;
     text-decoration: none;
   }
-  
+  .movie__summary{
+    color: black;
+    font-family:fantasy
+  }
   .movie__genres {
     list-style: none;
     padding: 0;
