@@ -1,0 +1,28 @@
+{
+    "Teams":[
+        {
+            "name":101,
+            "win":0,
+            "lose":0,
+            "draw":0
+        },
+        {
+            "name":102,
+            "win":0,
+            "lose":0,
+            "draw":0
+        },
+        {
+            "name":103,
+            "win":0,
+            "lose":0,
+            "draw":0
+        },
+        {
+            "name":104,
+            "win":0,
+            "lose":0,
+            "draw":0
+        }
+    ]
+}
