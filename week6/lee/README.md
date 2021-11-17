@@ -57,3 +57,18 @@ JSX란, javascript를 확장한 문법. html 문법을 그대로 활용하여 sc
 Rendering 할때에 React는 컴포넌트의 모든 것을 Rerendering 하는 것이 아니라 변경되는 요소만 업데이트 되게끔 한다.
 
 (__별거 아닌것 같지만 프로젝트가 커질수록 데이터 관리 측면에서 매우 중요할듯함.__)
+
+State를 활용하면, React가 더 쉬워진다. React.useState() method를 활용하면, 컴포넌트 내부의 변수를 설정할 수 있다.
+
+    const state = React.useState(초기값)
+
+위 코드와 같은 형태로 state를 선언할 수 있다. 변수의 형태는 [초기값을 갖는 변수, 함수]의 형태를 띄고 있다.
+
+그러므로 애초에 선언을 할때에
+
+    const [변수이름, modifier function] = React.useState(변수의 초기값)
+    modifier((current) => 현재 변수가 변화하는 함수 내용)
+
+위와 같은 형태로 선언을 하면 변수 선언과 동시에 해당 변수에 적용할 수 있는 method의 이름을 정의할 수 있다. (물론, method의 내용은 따로 작성해야함.)
+
+> * Point : state로 선언된 변수 혹은 method가 호출될 경우, React는 알아서 UI를 Rerendering 한다.
