@@ -15,8 +15,8 @@ function Table() {
   return (
     <div>
       {dorm.map((dorm) => (
-        <h1 key={dorm.name}>
-          {dorm.name} win : {dorm.win},point:{dorm.point}
+        <h1 key={dorm.id}>
+          {dorm.id} win : {dorm.win},point:{dorm.point}
         </h1>
       ))}
     </div>

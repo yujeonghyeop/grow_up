@@ -12,7 +12,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/calender" element={<Calender />} />
-        <Route path="/calender/creategame" element={<Creategame />}/>
+        <Route path="/creategame" element={<Creategame />}/>
         <Route path="/table" element={<Table />} />
         <Route path="/" element={<Home />} />
       </Routes>
