@@ -2,29 +2,29 @@
   "Teams": [
     {
       "id": "C101",
-      "win": 0,
-      "lose": 0,
-      "draw": 0,
-      "point": 0
+      "win": 4,
+      "lose": 2,
+      "draw": 1,
+      "point": 13
     },
     {
       "id": "C103",
-      "win": 0,
-      "lose": 0,
-      "draw": 0,
-      "point": 0
+      "win": 3,
+      "lose": 1,
+      "draw": 1,
+      "point": 10
     },
     {
       "id": "C102",
-      "win": 0,
-      "lose": 0,
+      "win": 2,
+      "lose": 3,
       "draw": 0,
-      "point": 0
+      "point": 6
     },
     {
       "id": "C104",
       "win": 0,
-      "lose": 0,
+      "lose": 3,
       "draw": 0,
       "point": 0
     }
