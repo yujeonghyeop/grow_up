@@ -17,3 +17,9 @@
 8. PATCH한 데이터 table에 전시
 9. json DB 수정 완료
 10. 내일 해야할일 db 포맷기능, table 정렬함수 손보기, history활용하여 데이터 업로드 끝나면 자동 화면전환하기
+
+# 2021.11.19
+1. useNegative 활용하여 데이터 입력 완료시 캘린더 페이지로 이동(useHistory 사라짐)
+2. Dataformat js파일 만든 뒤 포문 활용하여 db 포맷 진행
+3. 내일 할일 데이터 추가하면 추가한 데이터 기반으로 Calender.js에 결과 전시
+4. window.confirm 사용하여 데이터 추가 시 콘솔창으로 출력하기

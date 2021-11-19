@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useRef } from "react";
+import { useNavigate, } from "react-router-dom"
+import Dataformat from "./Dataformat";
 
 function Creategame() {
   const [lwin, setlwin] = useState(0);
@@ -9,6 +11,7 @@ function Creategame() {
   const [wpoint, setwpoint] = useState(0);
   const [lpoint, setlpoint] = useState(0);
   const [condition, setcondition] = useState(false);
+  const navigate = useNavigate();
 
   function onsubmit(event) {
     event.preventDefault();
@@ -77,6 +80,7 @@ function Creategame() {
     }).then((res) => {
       if (res.ok) {
         alert("update 완료");
+        navigate(-1)
       }
     });
     setcondition(false);
@@ -105,6 +109,7 @@ function Creategame() {
       </div>
       <button>저장</button>
       {condition ? <button onClick={onclick}>저장하시겠습니까?</button> : null}
+      <Dataformat />
     </form>
   );
 }
