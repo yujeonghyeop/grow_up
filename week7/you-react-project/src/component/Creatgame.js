@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useRef } from "react";
-import { useNavigate, } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import Dataformat from "./Dataformat";
 
 function Creategame() {
@@ -80,7 +80,7 @@ function Creategame() {
     }).then((res) => {
       if (res.ok) {
         alert("update 완료");
-        navigate(-1)
+        navigate(-1);
       }
     });
     setcondition(false);
