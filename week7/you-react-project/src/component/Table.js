@@ -9,21 +9,22 @@ import Paper from "@mui/material/Paper";
 
 function Dormtable() {
   const [dorm, Setdorm] = useState([]);
-  let i = 1;
+  let i = 0;
+  let cnt = 0;
   useEffect(() => {
     async function settable() {
       const json = await fetch("http://localhost:3002/Teams");
       const data = await json.json();
       data.sort(function (a, b) {
-        return a.point - b.point;
+        return a.lose - b.lose;
       });
-      Setdorm(data.reverse());
+      data.sort(function (a, b) {
+        return b.point - a.point;
+      });
+      Setdorm(data);
     }
     settable();
   }, []);
-  function plus() {
-    i = i + 1;
-  }
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -43,13 +44,14 @@ function Dormtable() {
               key={row.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              <TableCell align="center">{i}</TableCell>
+              <TableCell align="center">
+                {(cnt === row.point ? i : (i += 1), i)}
+              </TableCell>
               <TableCell align="center">{row.id}</TableCell>
               <TableCell align="center">{row.win}</TableCell>
               <TableCell align="center">{row.draw}</TableCell>
               <TableCell align="center">{row.lose}</TableCell>
-              <TableCell align="center">{row.point}</TableCell>
-              {plus()}
+              <TableCell align="center">{(cnt = row.point)}</TableCell>
             </TableRow>
           ))}
         </TableBody>
