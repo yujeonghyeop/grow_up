@@ -1,12 +1,17 @@
 import React, { useState } from "react";
-import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Dataformat from "./Dataformat";
-import styles from "./Creategame.module.css"
-// import Button from '@mui/material/Button';
-// import TextField from '@mui/material/TextField';
-
+import { Dialog } from "@mui/material";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import { DialogTitle } from "@mui/material";
+import { DialogContent } from "@mui/material";
+import { DialogActions } from "@mui/material";
 function Creategame() {
+  const [winteam, setwinteam] = useState('');
+  const [loseteam, setloseteam] = useState('');
+  const [winscore, setwinscore] = useState(0);
+  const [losescore, setlosescore] = useState(0);
   const [lwin, setlwin] = useState(0);
   const [llose, setllose] = useState(0);
   const [drawa, setdrawa] = useState(0);
@@ -14,22 +19,30 @@ function Creategame() {
   const [wpoint, setwpoint] = useState(0);
   const [lpoint, setlpoint] = useState(0);
   const [condition, setcondition] = useState(false);
+  const [modalcondition, setmodalcondition] = useState(false);
   const navigate = useNavigate();
-
+  function winteamhandle(e) {
+    setwinteam(e.target.value);
+  }
+  function loseteamhandle(e) {
+    setloseteam(e.target.value);
+  }
+  function winscorehanle(e) {
+    setwinscore(e.target.value);
+  }
+  function losescorehanle(e) {
+    setlosescore(e.target.value);
+  }
   function onsubmit(event) {
     event.preventDefault();
     async function getwin() {
       //win,lose 정보 설정
-      const win = await fetch(
-        `http://localhost:3002/Teams/${winteam.current.value}`
-      );
+      const win = await fetch(`http://localhost:3002/Teams/${winteam}`);
       const winn = await win.json();
       setlwin(winn.win + 1);
       setdrawa(winn.draw);
       setwpoint((winn.win + 1) * 3 + winn.draw);
-      const los = await fetch(
-        `http://localhost:3002/Teams/${loseteam.current.value}`
-      );
+      const los = await fetch(`http://localhost:3002/Teams/${loseteam}`);
       const lose = await los.json();
       setllose(lose.lose + 1);
       setdrawb(lose.draw);
@@ -37,29 +50,25 @@ function Creategame() {
     }
     async function getdraw() {
       //draw 정보 설정
-      const res = await fetch(
-        `http://localhost:3002/Teams/${winteam.current.value}`
-      );
+      const res = await fetch(`http://localhost:3002/Teams/${winteam}`);
       const ress = await res.json();
       setlwin(ress.win);
       setdrawa(ress.draw + 1);
       setwpoint(ress.win * 3 + ress.draw + 1);
 
-      const ab = await fetch(
-        `http://localhost:3002/Teams/${loseteam.current.value}`
-      );
+      const ab = await fetch(`http://localhost:3002/Teams/${loseteam}`);
       const abc = await ab.json();
       setllose(abc.lose);
       setdrawb(abc.draw + 1);
       setlpoint(ress.win * 3 + ress.draw + 1);
     }
-    winscore.current.value === losescore.current.value ? getdraw() : getwin();
+    winscore === losescore ? getdraw() : getwin();
     setcondition(true);
   }
   function onclick(event) {
     //저장 할 시 win팀의 정보와 lose팀의 정보를 patch한다.
     event.preventDefault();
-    fetch(`http://localhost:3002/Teams/${winteam.current.value}`, {
+    fetch(`http://localhost:3002/Teams/${winteam}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -70,7 +79,7 @@ function Creategame() {
         point: wpoint,
       }),
     });
-    fetch(`http://localhost:3002/Teams/${loseteam.current.value}`, {
+    fetch(`http://localhost:3002/Teams/${loseteam}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -87,34 +96,56 @@ function Creategame() {
       }
     });
     setcondition(false);
+    setmodalcondition(false);
   }
-  const winteam = useRef(null); //useRef는 돔에접근할수 있게 해준다.
-  const winscore = useRef(null);
-  const loseteam = useRef(null);
-  const losescore = useRef(null);
   return (
-    <div className={styles.formin}>
-    <form onSubmit={onsubmit}>
-      <div className="input_area">
-        <label>Win team</label>
-        <input type="text" placeholder="C101" ref={winteam}></input>
-      </div>
-      <div className="input_area">
-        <label>Win score</label>
-        <input type="text" placeholder="2" ref={winscore}></input>
-      </div>
-      <div className="input_area">
-        <label>Lose team</label>
-        <input type="text" placeholder="C102" ref={loseteam}></input>
-      </div>
-      <div className="input_area">
-        <label>Lose score</label>
-        <input type="text" placeholder="0" ref={losescore}></input>
-      </div>
-      <button >저장</button>
-      {condition ? <button onClick={onclick}>저장하시겠습니까?</button> : null}
+    <div>
+      <Button onClick={() => setmodalcondition(true)}>경기 추가</Button>
+      <Dialog open={modalcondition} onClose={() => setmodalcondition(false)}>
+        <DialogTitle>경기 추가</DialogTitle>
+        <DialogContent>
+          <br />
+          <TextField
+            label="Win Team"
+            input
+            type="text"
+            placeholder="C101"
+            onChange={winteamhandle}
+          ></TextField>
+          <TextField
+            label="Lose Team"
+            input
+            type="text"
+            placeholder="C102"
+            onChange={loseteamhandle}
+          ></TextField>
+          <br />
+          <br />
+          <TextField
+            label="Win score"
+            input
+            type="text"
+            placeholder="2"
+            onChange={winscorehanle}
+          ></TextField>
+          <TextField
+            label="Lose score"
+            input
+            type="text"
+            placeholder="1"
+            onChange={losescorehanle}
+          ></TextField>
+          <br />
+          <br />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={onsubmit}>추가</Button>
+          {condition ? (
+            <Button onClick={onclick}>저장하시겠습니까?</Button>
+          ) : null}
+        </DialogActions>
+      </Dialog>
       <Dataformat />
-    </form>
     </div>
   );
 }
