@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Dataformat from "./Dataformat";
+import styles from "./Creategame.module.css"
+// import Button from '@mui/material/Button';
+// import TextField from '@mui/material/TextField';
 
 function Creategame() {
   const [lwin, setlwin] = useState(0);
@@ -90,27 +93,29 @@ function Creategame() {
   const loseteam = useRef(null);
   const losescore = useRef(null);
   return (
+    <div className={styles.formin}>
     <form onSubmit={onsubmit}>
       <div className="input_area">
-        <label>win team</label>
+        <label>Win team</label>
         <input type="text" placeholder="C101" ref={winteam}></input>
       </div>
       <div className="input_area">
-        <label>win score</label>
+        <label>Win score</label>
         <input type="text" placeholder="2" ref={winscore}></input>
       </div>
       <div className="input_area">
-        <label>lose team</label>
+        <label>Lose team</label>
         <input type="text" placeholder="C102" ref={loseteam}></input>
       </div>
       <div className="input_area">
-        <label>lose score</label>
+        <label>Lose score</label>
         <input type="text" placeholder="0" ref={losescore}></input>
       </div>
-      <button>저장</button>
+      <button >저장</button>
       {condition ? <button onClick={onclick}>저장하시겠습니까?</button> : null}
       <Dataformat />
     </form>
+    </div>
   );
 }
 

@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Button from '@mui/material/Button';
+
 
 function Dataformat() {
   const dorm = ["C101", "C102", "C103", "C104"];
@@ -29,7 +31,7 @@ function Dataformat() {
   }
   return (
     <div>
-      <button onClick={onclick}>Data Format</button>
+      <Button onClick={onclick}>Data Format</Button>
     </div>
   );
 }
