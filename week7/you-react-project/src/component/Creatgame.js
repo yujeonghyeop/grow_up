@@ -6,9 +6,10 @@ import TextField from "@mui/material/TextField";
 import { DialogTitle } from "@mui/material";
 import { DialogContent } from "@mui/material";
 import { DialogActions } from "@mui/material";
+
 function Creategame() {
-  const [winteam, setwinteam] = useState('');
-  const [loseteam, setloseteam] = useState('');
+  const [winteam, setwinteam] = useState("");
+  const [loseteam, setloseteam] = useState("");
   const [winscore, setwinscore] = useState(0);
   const [losescore, setlosescore] = useState(0);
   const [lwin, setlwin] = useState(0);
@@ -19,6 +20,7 @@ function Creategame() {
   const [lpoint, setlpoint] = useState(0);
   const [condition, setcondition] = useState(false);
   const [modalcondition, setmodalcondition] = useState(false);
+  const [gameid, setgameid] = useState(0);
   const navigate = useNavigate();
   function winteamhandle(e) {
     setwinteam(e.target.value);
@@ -32,8 +34,15 @@ function Creategame() {
   function losescorehanle(e) {
     setlosescore(e.target.value);
   }
+
   function onsubmit(event) {
     event.preventDefault();
+    async function getgamenum() {
+      const gam = await fetch(`http://localhost:3002/Results`);
+      const game = await gam.json();
+      console.log(game);
+      setgameid(game.length + 1);
+    }
     async function getwin() {
       //win,lose 정보 설정
       const win = await fetch(`http://localhost:3002/Teams/${winteam}`);
@@ -61,12 +70,26 @@ function Creategame() {
       setdrawb(abc.draw + 1);
       setlpoint(ress.win * 3 + ress.draw + 1);
     }
+    getgamenum();
     winscore === losescore ? getdraw() : getwin();
     setcondition(true);
   }
   function onclick(event) {
     //저장 할 시 win팀의 정보와 lose팀의 정보를 patch한다.
     event.preventDefault();
+    fetch(`http://localhost:3002/Results/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: gameid,
+        win: winteam,
+        winscore: winscore,
+        lose: loseteam,
+        losescore: losescore,
+      }),
+    });
     fetch(`http://localhost:3002/Teams/${winteam}`, {
       method: "PATCH",
       headers: {
@@ -94,6 +117,7 @@ function Creategame() {
         navigate(-1);
       }
     });
+
     setcondition(false);
     setmodalcondition(false);
   }
