@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Dataformat from "./Dataformat";
 import { Dialog } from "@mui/material";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -145,7 +144,6 @@ function Creategame() {
           ) : null}
         </DialogActions>
       </Dialog>
-      <Dataformat />
     </div>
   );
 }
