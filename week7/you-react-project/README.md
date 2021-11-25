@@ -48,3 +48,8 @@
 5. POST하기 이전에 data를 fetch하고 그 data.length를 state로 저장해준 다음 이 length+1을 id로 지정한다.
 6. 데이터 전시는 완료했지만, result Format과정에서 5번의 과정을 실행하는데에 시간이 걸려 fetch가 되기전에 Format이 되는 상황이 발생한다.
 7. 내일 할일 6번 해결하고, 데이터 전시 table 꾸미기
+
+# 2021.11.25
+1. Result 결과 전시하는 부분 Table UI사용하여 꾸미기
+2. Dataformat부분 23일 6번 문제 fetch해오는 부분 click이벤트 맨 앞으로 자리 옮김
+3. 아주 실행 잘됨
