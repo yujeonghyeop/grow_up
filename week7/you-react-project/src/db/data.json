@@ -2,34 +2,79 @@
   "Teams": [
     {
       "id": "C101",
-      "win": 0,
-      "lose": 0,
+      "game": 3,
+      "win": 2,
+      "lose": 1,
       "draw": 0,
-      "point": 0
+      "point": 6
     },
     {
       "id": "C102",
+      "game": 3,
       "win": 0,
-      "lose": 0,
-      "draw": 0,
-      "point": 0
+      "lose": 2,
+      "draw": 1,
+      "point": 1
     },
     {
       "id": "C103",
-      "win": 0,
+      "game": 3,
+      "win": 2,
       "lose": 0,
-      "draw": 0,
-      "point": 0
+      "draw": 1,
+      "point": 7
     },
     {
       "id": "C104",
+      "game": 3,
       "win": 0,
-      "lose": 0,
-      "draw": 0,
-      "point": 0
+      "lose": 1,
+      "draw": 2,
+      "point": 2
     }
   ],
   "Results": [
-    
+    {
+      "id": 1,
+      "win": "C101",
+      "winscore": "2",
+      "lose": "C102",
+      "losescore": "1"
+    },
+    {
+      "id": 2,
+      "win": "C103",
+      "winscore": "3",
+      "lose": "C104",
+      "losescore": "3"
+    },
+    {
+      "id": 3,
+      "win": "C103",
+      "winscore": "3",
+      "lose": "C101",
+      "losescore": "0"
+    },
+    {
+      "id": 4,
+      "win": "C102",
+      "winscore": "1",
+      "lose": "C104",
+      "losescore": "1"
+    },
+    {
+      "id": 5,
+      "win": "C101",
+      "winscore": "1",
+      "lose": "C104",
+      "losescore": "0"
+    },
+    {
+      "id": 6,
+      "win": "C103",
+      "winscore": "3",
+      "lose": "C102",
+      "losescore": "2"
+    }
   ]
 }

@@ -21,6 +21,8 @@ function Creategame() {
   const [condition, setcondition] = useState(false);
   const [modalcondition, setmodalcondition] = useState(false);
   const [gameid, setgameid] = useState(0);
+  const [wgame, setwgame] = useState(0);
+  const [lgame, setlgame] = useState(0);
   const navigate = useNavigate();
   function winteamhandle(e) {
     setwinteam(e.target.value);
@@ -50,11 +52,13 @@ function Creategame() {
       setlwin(winn.win + 1);
       setdrawa(winn.draw);
       setwpoint((winn.win + 1) * 3 + winn.draw);
+      setwgame(winn.win+1+winn.lose+winn.draw)
       const los = await fetch(`http://localhost:3002/Teams/${loseteam}`);
       const lose = await los.json();
       setllose(lose.lose + 1);
       setdrawb(lose.draw);
       setlpoint(lose.win * 3 + lose.draw);
+      setlgame(lose.win+lose.lose+1+lose.draw)
     }
     async function getdraw() {
       //draw 정보 설정
@@ -63,12 +67,13 @@ function Creategame() {
       setlwin(ress.win);
       setdrawa(ress.draw + 1);
       setwpoint(ress.win * 3 + ress.draw + 1);
-
+      setwgame(ress.win+ress.lose+ress.draw+1)
       const ab = await fetch(`http://localhost:3002/Teams/${loseteam}`);
       const abc = await ab.json();
       setllose(abc.lose);
       setdrawb(abc.draw + 1);
       setlpoint(ress.win * 3 + ress.draw + 1);
+      setlgame(abc.win+abc.lose+abc.draw+1)
     }
     getgamenum();
     winscore === losescore ? getdraw() : getwin();
@@ -96,6 +101,7 @@ function Creategame() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        game: wgame,
         win: lwin,
         draw: drawa,
         point: wpoint,
@@ -107,6 +113,7 @@ function Creategame() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        game: lgame,
         lose: llose,
         draw: drawb,
         point: lpoint,

@@ -19,6 +19,9 @@ function Dormtable() {
         return a.lose - b.lose;
       });
       data.sort(function (a, b) {
+        return a.game - b.game;
+      });
+      data.sort(function (a, b) {
         return b.point - a.point;
       });
       Setdorm(data);
@@ -32,6 +35,7 @@ function Dormtable() {
           <TableRow>
             <TableCell align="center">Num</TableCell>
             <TableCell align="center">Team name</TableCell>
+            <TableCell align="center">Game</TableCell>
             <TableCell align="center">Win</TableCell>
             <TableCell align="center">Draw</TableCell>
             <TableCell align="center">Lose</TableCell>
@@ -48,6 +52,7 @@ function Dormtable() {
                 {(cnt === row.point ? i : (i += 1), i)}
               </TableCell>
               <TableCell align="center">{row.id}</TableCell>
+              <TableCell align="center">{row.game}</TableCell>
               <TableCell align="center">{row.win}</TableCell>
               <TableCell align="center">{row.draw}</TableCell>
               <TableCell align="center">{row.lose}</TableCell>
