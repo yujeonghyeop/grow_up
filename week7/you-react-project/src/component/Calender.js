@@ -7,8 +7,8 @@ function Calender() {
   return (
     <div>
       <Creategame/>
-      <Dataformat/>
       <Result/>
+      <Dataformat/>
     </div>
   );
 }

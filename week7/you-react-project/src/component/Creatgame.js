@@ -129,7 +129,7 @@ function Creategame() {
   }
   return (
     <div>
-      <Button onClick={() => setmodalcondition(true)}>경기 추가</Button>
+      <Button onClick={() => setmodalcondition(true)} variant="contained">경기 추가</Button>
       <Dialog open={modalcondition} onClose={() => setmodalcondition(false)}>
         <DialogTitle>경기 추가</DialogTitle>
         <DialogContent>

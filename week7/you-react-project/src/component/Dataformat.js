@@ -43,7 +43,7 @@ function Dataformat() {
   }
   return (
     <div>
-      <Button onClick={onclick}>Data Format</Button>
+      <Button onClick={onclick} variant="contained" color ="error">Data Format</Button>
     </div>
   );
 }
