@@ -42,7 +42,6 @@ function Creategame() {
     async function getgamenum() {
       const gam = await fetch(`http://localhost:3002/Results`);
       const game = await gam.json();
-      console.log(game);
       setgameid(game.length + 1);
     }
     async function getwin() {
