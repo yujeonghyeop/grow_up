@@ -22,6 +22,7 @@ function Dataformat() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
+            game: 0,
             win: 0,
             lose: 0,
             draw: 0,
@@ -43,7 +44,9 @@ function Dataformat() {
   }
   return (
     <div>
-      <Button onClick={onclick} variant="contained" color ="error">Data Format</Button>
+      <Button onClick={onclick} variant="contained" color="error">
+        Data Format
+      </Button>
     </div>
   );
 }

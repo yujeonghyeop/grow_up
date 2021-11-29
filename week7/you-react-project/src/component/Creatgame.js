@@ -104,6 +104,8 @@ function Creategame() {
         win: lwin,
         draw: drawa,
         point: wpoint,
+        gf : winscore,
+        ga : losescore
       }),
     });
     fetch(`http://localhost:3002/Teams/${loseteam}`, {
@@ -116,6 +118,8 @@ function Creategame() {
         lose: llose,
         draw: drawb,
         point: lpoint,
+        gf : losescore,
+        ga : winscore
       }),
     }).then((res) => {
       if (res.ok) {

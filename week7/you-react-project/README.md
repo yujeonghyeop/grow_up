@@ -63,3 +63,13 @@
 # 2021.11.27
 1. home 구성생각
 2. node.js 사용하여 Rest API 구상
+
+# 2021.11.28
+1. grid 와 stack 사용하여 home 구성
+2. home에 전시되는 경기결과 일부만 띄우기 위해 BoxResult.js 새로 생성
+3. 데이터 받아오는것은 똑같지만, 슬라이싱 활용하여 최근 6경기만 저장
+4. 저장한 데이터 Stack 형식으로 전시 후 home.js에서 컴포넌트로 활용
+5. home에 전시되는 table과 table에 전시되는 table 차별화하기 위해 ExTable.js 생성
+6. ExTable은 home에 보여지는 간단한 순위표(경기수, 승, 무, 패, 승점)
+7. Table에 보여지는 순위표는 GD, GF, GA 까지 보여주게 하기
+8. GD,GF,GA 데이터 저장 위해 Creategame.js에서 코드 수정
