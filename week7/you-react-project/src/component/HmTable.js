@@ -7,7 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-function ExTable() {
+function HmTable() {
   const [dorm, Setdorm] = useState([]);
   let i = 0;
   let cnt = 0;
@@ -65,4 +65,4 @@ function ExTable() {
   );
 }
 
-export default ExTable;
+export default HmTable;

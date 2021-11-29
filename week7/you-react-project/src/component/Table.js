@@ -39,9 +39,9 @@ function Dormtable() {
             <TableCell align="center">Win</TableCell>
             <TableCell align="center">Draw</TableCell>
             <TableCell align="center">Lose</TableCell>
-            <TableCell align="center">GD</TableCell>
             <TableCell align="center">GF</TableCell>
             <TableCell align="center">GA</TableCell>
+            <TableCell align="center">GD</TableCell>
             <TableCell align="center">Point</TableCell>
           </TableRow>
         </TableHead>
@@ -58,10 +58,10 @@ function Dormtable() {
               <TableCell align="center">{row.game}</TableCell>
               <TableCell align="center">{row.win}</TableCell>
               <TableCell align="center">{row.draw}</TableCell>
-              <TableCell align="center">{row.lose}</TableCell>
-              <TableCell align="center">{row.gd}</TableCell>
+              <TableCell align="center">{row.lose}</TableCell>        
               <TableCell align="center">{row.gf}</TableCell>
               <TableCell align="center">{row.ga}</TableCell>
+              <TableCell align="center">{row.gd}</TableCell>
               <TableCell align="center">{(cnt = row.point)}</TableCell>
             </TableRow>
           ))}

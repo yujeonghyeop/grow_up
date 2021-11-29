@@ -13,7 +13,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-function BoxResult() {
+function HmResult() {
   const [result, setresult] = useState([]);
   useEffect(() => {
     async function settable() {
@@ -48,4 +48,4 @@ function BoxResult() {
   );
 }
 
-export default BoxResult;
+export default HmResult;

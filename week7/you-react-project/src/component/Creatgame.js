@@ -23,6 +23,10 @@ function Creategame() {
   const [gameid, setgameid] = useState(0);
   const [wgame, setwgame] = useState(0);
   const [lgame, setlgame] = useState(0);
+  const [wgf, setwgf] = useState(0);
+  const [lgf, setlgf] = useState(0);
+  const [wga, setwga] = useState(0);
+  const [lga, setlga] = useState(0);
   const navigate = useNavigate();
   function winteamhandle(e) {
     setwinteam(e.target.value);
@@ -31,10 +35,10 @@ function Creategame() {
     setloseteam(e.target.value);
   }
   function winscorehanle(e) {
-    setwinscore(e.target.value);
+    setwinscore(Number(e.target.value));
   }
   function losescorehanle(e) {
-    setlosescore(e.target.value);
+    setlosescore(Number(e.target.value));
   }
 
   function onsubmit(event) {
@@ -51,13 +55,17 @@ function Creategame() {
       setlwin(winn.win + 1);
       setdrawa(winn.draw);
       setwpoint((winn.win + 1) * 3 + winn.draw);
-      setwgame(winn.win+1+winn.lose+winn.draw)
+      setwgame(winn.win + 1 + winn.lose + winn.draw);
+      setwgf(winn.gf + winscore);
+      setwga(winn.ga + losescore);
       const los = await fetch(`http://localhost:3002/Teams/${loseteam}`);
       const lose = await los.json();
       setllose(lose.lose + 1);
       setdrawb(lose.draw);
       setlpoint(lose.win * 3 + lose.draw);
-      setlgame(lose.win+lose.lose+1+lose.draw)
+      setlgame(lose.win + lose.lose + 1 + lose.draw);
+      setlgf(lose.gf + losescore);
+      setlga(lose.ga + winscore);
     }
     async function getdraw() {
       //draw 정보 설정
@@ -66,13 +74,17 @@ function Creategame() {
       setlwin(ress.win);
       setdrawa(ress.draw + 1);
       setwpoint(ress.win * 3 + ress.draw + 1);
-      setwgame(ress.win+ress.lose+ress.draw+1)
+      setwgame(ress.win + ress.lose + ress.draw + 1);
+      setwgf(ress.gf + winscore);
+      setwga(ress.ga + losescore);
       const ab = await fetch(`http://localhost:3002/Teams/${loseteam}`);
       const abc = await ab.json();
       setllose(abc.lose);
       setdrawb(abc.draw + 1);
-      setlpoint(ress.win * 3 + ress.draw + 1);
-      setlgame(abc.win+abc.lose+abc.draw+1)
+      setlpoint(abc.win * 3 + abc.draw + 1);
+      setlgame(abc.win + abc.lose + abc.draw + 1);
+      setlgf(abc.gf + losescore);
+      setlga(abc.ga + winscore);
     }
     getgamenum();
     winscore === losescore ? getdraw() : getwin();
@@ -104,8 +116,9 @@ function Creategame() {
         win: lwin,
         draw: drawa,
         point: wpoint,
-        gf : winscore,
-        ga : losescore
+        gf: wgf,
+        ga: wga,
+        gd: wgf - wga,
       }),
     });
     fetch(`http://localhost:3002/Teams/${loseteam}`, {
@@ -118,8 +131,9 @@ function Creategame() {
         lose: llose,
         draw: drawb,
         point: lpoint,
-        gf : losescore,
-        ga : winscore
+        gf: lgf,
+        ga: lga,
+        gd: lgf - lga,
       }),
     }).then((res) => {
       if (res.ok) {
@@ -133,7 +147,9 @@ function Creategame() {
   }
   return (
     <div>
-      <Button onClick={() => setmodalcondition(true)} variant="contained">경기 추가</Button>
+      <Button onClick={() => setmodalcondition(true)} variant="contained">
+        경기 추가
+      </Button>
       <Dialog open={modalcondition} onClose={() => setmodalcondition(false)}>
         <DialogTitle>경기 추가</DialogTitle>
         <DialogContent>

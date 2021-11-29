@@ -27,6 +27,9 @@ function Dataformat() {
             lose: 0,
             draw: 0,
             point: 0,
+            gf: 0,
+            ga: 0,
+            gd: 0,
           }),
         });
       }
