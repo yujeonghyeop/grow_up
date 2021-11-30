@@ -8,90 +8,34 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type = "text/babel">
         const root = document.getElementById("root");
-        function Min2Hour() {
-            const [time, setTime] = React.useState();
-            const [flip, setFlip] = React.useState(false);
-            const onChange = (event) => {
-                setTime(event.target.value);
-            };
-            const reset = () => {
-                setTime(0);
-            };
-            const onFlip = () => {
-                setTime(0);
-                setFlip(!flip); 
-            };
-            return ( <div>
-                <h3>Super Converter!</h3>
-                <div>
-                    <label htmlFor = "minutes">Minutes</label>
-                    <input 
-                        id = "minutes"
-                        value = {flip ? time*60: time}
-                        onChange = {onChange}
-                        placeholder = "Minutes"
-                        disabled = {flip}
-                        type = "number"/>
-                </div>
-                <div>
-                    <label htmlFor = "hours">Hours </label>
-                    <input
-                        value = {flip ? time : Math.round(time/60) } 
-                        id = "hours"
-                        placeholder = "Hours"
-                        disabled = {!flip}
-                        onChange = {onChange} 
-                        type = "number" /> 
-                </div>
-                <button onClick = {reset}>Reset</button>
-                <button onClick = {onFlip}>Flip</button>
-            </div>)
+        function Btn(props){
+            console.log(props);
+            return(
+                <button
+                    onClick = {props.onClick}
+                    style = {{
+                        backgroundColor : "tomato",
+                        color : "white",
+                        tading : "10px 20px ", 
+                        border : 0,
+                        borderRadius : 10 
+                    }}
+                >
+                    {props.banana}
+                </button>
+            )
         }
-        function Km2Mile() {
-            const [time, setTime] = React.useState();
-            const [flip, setFlip] = React.useState(false);
-            const onChange = (event) => {
-                setTime(event.target.value);
-            };
-            const reset = () => {
-                setTime(0);
-            };
-            const onFlip = () => {
-                setTime(0);
-                setFlip(!flip); 
-            };
-            return ( <div>
-                <h3>Super Converter!</h3>
-                <div>
-                    <label htmlFor = "minutes">Minutes</label>
-                    <input 
-                        id = "minutes"
-                        value = {flip ? time*60: time}
-                        onChange = {onChange}
-                        placeholder = "Minutes"
-                        disabled = {flip}
-                        type = "number"/>
-                </div>
-                <div>
-                    <label htmlFor = "hours">Hours </label>
-                    <input
-                        value = {flip ? time : Math.round(time/60) } 
-                        id = "hours"
-                        placeholder = "Hours"
-                        disabled = {!flip}
-                        onChange = {onChange} 
-                        type = "number" /> 
-                </div>
-                <button onClick = {reset}>Reset</button>
-                <button onClick = {onFlip}>Flip</button>
-            </div>)
-        } 
         function App() {
-            return {
-                
-            };
+            const [myvalue, setMyvalue] = React.useState("Save Changes");
+            const changeValue = () => setMyvalue("Revert Changes");
+            
+            return ( 
+                <div>
+                    <Btn banana =  {myvalue} onClick = {changeValue}/>
+                    <Btn banana = "Awesome!" />
+                </div>
+            )
         }
-        
-        ReactDOM.render(<App />, root);
+        ReactDOM.render(<App />,root)
     </script> 
 </html>

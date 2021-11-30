@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id = "root"></div>
+    </body>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type = "text/babel">
+        const root = document.getElementById("root");
+        function Min2Hour() {
+            const [time, setTime] = React.useState();
+            const [flip, setFlip] = React.useState(false);
+            const onChange = (event) => {
+                setTime(event.target.value);
+            };
+            const reset = () => {
+                setTime(0);
+            };
+            const onFlip = () => {
+                setTime(0);
+                setFlip(!flip); 
+            };
+            return ( <div>
+                <div>
+                    <label htmlFor = "minutes">Minutes</label>
+                    <input 
+                        id = "minutes"
+                        value = {flip ? time*60: time}
+                        onChange = {onChange}
+                        placeholder = "Minutes"
+                        disabled = {flip}
+                        type = "number"/>
+                </div>
+                <div>
+                    <label htmlFor = "hours">Hours </label>
+                    <input
+                        value = {flip ? time : Math.round(time/60) } 
+                        id = "hours"
+                        placeholder = "Hours"
+                        disabled = {!flip}
+                        onChange = {onChange} 
+                        type = "number" /> 
+                </div>
+                <button onClick = {reset}>Reset</button>
+                <button onClick = {onFlip}>Flip</button>
+            </div>)
+        }
+        function Km2Mile() {
+            const [dist, setDist] = React.useState();
+            const [flip, setFlip] = React.useState(false);
+            function onChange(event){
+                setDist(event.target.value);
+            }
+            function reset(){
+                setDist(0);
+            }
+            function onFlip(){
+                setFlip(!flip);
+            }
+            return (<div>
+                    <div>
+                        <label htmlFor = "km">Km</label>
+                        <input
+                            id = "km"
+                            value = {flip? dist/0.621371 :dist}
+                            onChange = {onChange}
+                            placeholder = "Km"
+                            disabled = {flip}
+                            type = "number"
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor = "mile">Mile</label>
+                        <input
+                            id = "mile"
+                            value = {flip? dist : 0.621371*dist}
+                            onChange = {onChange}
+                            placeholder = "Mile"
+                            disabled = {!flip}
+                            type = "number"
+                        />
+                    </div>
+                    <button onClick = {reset}>Reset</button>
+                    <button onClick = {onFlip}>Flip</button>
+                </div>)
+        } 
+        function App() {
+            const [index, setIndex] = React.useState("0");
+            const onSelcet = (event) => {
+                setIndex(event.target.value);
+            }
+            return ( 
+                <div>
+                    <h1>Super Converter</h1>
+                    <select value = {index} onChange= {onSelcet}>
+                        <option value = "0">Min & Hour</option>
+                        <option value = "1">Km & Mile</option>   
+                    </select>
+                    <hr/>
+                    {index === "0" ? <Min2Hour /> : null}
+                    {index === "1" ? <Km2Mile /> : null}
+                </div>
+            )
+        }
+        
+        ReactDOM.render(<App />, root);
+    </script> 
+</html>

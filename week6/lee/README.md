@@ -72,3 +72,39 @@ State를 활용하면, React가 더 쉬워진다. React.useState() method를 활
 위와 같은 형태로 선언을 하면 변수 선언과 동시에 해당 변수에 적용할 수 있는 method의 이름을 정의할 수 있다. (물론, method의 내용은 따로 작성해야함.)
 
 > * Point : state로 선언된 변수 혹은 method가 호출될 경우, React는 알아서 UI를 Rerendering 한다.
+
+React로 코딩을 할 경우 Devide and conquer 방식으로 코딩할 일이 많을 것이다. 예를 들면, 한 회사에서 사이트에 버튼을 만들 경우
+
+통일성을 주기 위해 모든 디자인과 컨셉을 맞출 것이다. 하지만, 내용이 달라야 하거나 onClick()함수의 내용이 달라야 한다면?
+
+이를 위해서 React를 이용할 때에는 button 이나 input을 받을 경우 각각을 객체로 만든다.
+
+그 이후에 객체를 만들 때에 있어서 properties, 즉 html에서의 속성들을 직접 추가해줄 수 있다. 이러한 property들은 모두
+
+생성 함수에서 인자로 넘어가게 되는데, 이를 바탕으로 각 button 이나 input을 customize 할 수 있다.
+
+    function Btn(props){
+        return (
+            <button
+                fontSize : big ? 18 : 16
+            >
+                {props.text}
+            </button>
+        )
+    }
+    <Btn text : "blaa", big = "true"  />
+
+위와 같은 형식으로 선언을 해주고 props를 해당 객체를 생성할 때에 있어서 커스텀해주면 된다.
+
+**Property를 만들면 적용될 컴포넌트의 반환값에도 변화를 주어야 한다.**
+
+    const MemoBtn = React.memo(Btn);
+
+위와 같이 Btn을 생성할 경우에는 Btn의 상태를 React가 기억하게 된다. 그에 따라서 반드시 바뀌어야만 하는 컴포넌트만 re-render 하게 된다.
+
+    Btn.propTypes = {
+        text : PropTypes.string.isRequired,  //text is the property is essential.
+        fontSize : PropTypes.number,         //But, fontSize isn't essential.
+    }
+
+isRequired 를 뒤에 붙임으로써 해당 property를 필수적인 요소로 지정할 수 있다. 이를 바탕으로 에러를 일으킬 수도 있다. 
